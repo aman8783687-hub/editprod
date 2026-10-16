@@ -1,0 +1,6 @@
+{
+  "name": "server",
+  "type": "module",
+  "scripts": { "start": "node src/index.js", "dev": "node --watch src/index.js", "test": "node --test test/*.test.js" },
+  "dependencies": { "express": "^4.19.0", "cors": "^2.8.5", "dotenv": "^16.4.5", "@octokit/rest": "^20.0.0" }
+}

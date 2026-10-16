@@ -1,0 +1,16 @@
+name: agent-job
+on:
+  workflow_dispatch:
+    inputs:
+      prompt: { description: 'Agent prompt', required: true, type: string }
+      session_id: { description: 'Session id', required: false, type: string }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm i -g opencode-ai || npm i -g @opencode/cli || true
+      - run: opencode --version || npx -y opencode-ai --version || echo "mock-mode"
+      - run: echo "${{ inputs.prompt }}" > prompt.txt && cat prompt.txt
